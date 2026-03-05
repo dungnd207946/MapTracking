@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Bản đồ - MapTracking{% endblock %}
+
+{% block content %}
+<div class="app-layout">
+    <aside class="sidebar">
+        <h2>Tìm đường đi</h2>
+
+        <div class="form-group">
+            <label>Điểm đi (A)</label>
+            <input type="text" id="search-start" class="search-input" placeholder="Nhập tên đường hoặc click bản đồ...">
+            <div id="dropdown-start" class="search-dropdown"></div>
+            <div id="start-label" class="point-label point-a"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Điểm đến (B)</label>
+            <input type="text" id="search-end" class="search-input" placeholder="Nhập tên đường hoặc click bản đồ...">
+            <div id="dropdown-end" class="search-dropdown"></div>
+            <div id="end-label" class="point-label point-b"></div>
+        </div>
+
+        <button id="btn-find-route" class="btn btn-primary btn-full" disabled>Tìm đường</button>
+        <button id="btn-clear" class="btn btn-outline btn-full">Xoá chọn</button>
+
+        <div id="route-result" class="route-result" style="display:none">
+            <h3>Kết quả</h3>
+            <div id="route-info"></div>
+            <div id="route-steps"></div>
+        </div>
+
+        <div class="legend">
+            <h3>Chú thích</h3>
+            <div class="legend-item"><span class="legend-color" style="background:#f59e0b"></span> Tắc đường</div>
+            <div class="legend-item"><span class="legend-color" style="background:#3b82f6"></span> Ngập lụt</div>
+            <div class="legend-item"><span class="legend-color" style="background:#ef4444"></span> Đường cấm</div>
+            <div class="legend-item"><span class="legend-line one-way-line"></span> Đường một chiều</div>
+            <div class="legend-item"><span class="legend-color" style="background:#16a34a"></span> Tuyến đường</div>
+        </div>
+    </aside>
+
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>const IS_ADMIN = false;</script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}

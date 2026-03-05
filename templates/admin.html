@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Quản lý - MapTracking{% endblock %}
+
+{% block content %}
+<div class="app-layout">
+    <aside class="sidebar sidebar-admin">
+        <h2>Quản lý tình huống</h2>
+
+        <div class="admin-selected" id="admin-selected" style="display:none">
+            <h3>Đoạn đường đã chọn</h3>
+            <div id="selected-edge-info"></div>
+
+            <div class="form-group">
+                <label>Trạng thái</label>
+                <select id="edge-status">
+                    <option value="normal">Bình thường</option>
+                    <option value="congested">Tắc đường</option>
+                    <option value="flooded">Ngập lụt</option>
+                    <option value="blocked">Đường cấm / Chặn</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="edge-oneway">
+                    Đường một chiều
+                </label>
+            </div>
+
+            <button id="btn-update-edge" class="btn btn-primary btn-full">Cập nhật</button>
+        </div>
+
+        <div class="admin-hint" id="admin-hint">
+            <p>Click vào một đoạn đường trên bản đồ để chỉnh sửa trạng thái.</p>
+        </div>
+
+        <div class="edge-list-section">
+            <h3>Danh sách đường</h3>
+            <input type="text" id="edge-filter" class="search-input" placeholder="Lọc theo tên đường...">
+            <div id="edge-list" class="edge-list"></div>
+        </div>
+
+        <div class="legend">
+            <h3>Chú thích</h3>
+            <div class="legend-item"><span class="legend-color" style="background:rgba(100,100,100,0.4)"></span> Bình thường</div>
+            <div class="legend-item"><span class="legend-color" style="background:#f59e0b"></span> Tắc đường</div>
+            <div class="legend-item"><span class="legend-color" style="background:#3b82f6"></span> Ngập lụt</div>
+            <div class="legend-item"><span class="legend-color" style="background:#ef4444"></span> Đường cấm</div>
+            <div class="legend-item"><span class="legend-line one-way-line"></span> Đường một chiều</div>
+        </div>
+    </aside>
+
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>const IS_ADMIN = true;</script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}

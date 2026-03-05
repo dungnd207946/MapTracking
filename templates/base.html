@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MapTracking{% endblock %}</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-left">
+            <span class="logo">&#9737; MapTracking</span>
+        </div>
+        <div class="topbar-right">
+            {% if session.get('username') %}
+                <span class="user-info">{{ session['username'] }} ({{ session['role'] }})</span>
+                {% if session.get('role') == 'admin' %}
+                    <a href="{{ url_for('admin') }}" class="btn btn-sm">Admin</a>
+                    <a href="{{ url_for('index') }}" class="btn btn-sm">Bản đồ</a>
+                {% endif %}
+                <a href="{{ url_for('logout') }}" class="btn btn-sm btn-outline">Đăng xuất</a>
+            {% endif %}
+        </div>
+    </header>
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
