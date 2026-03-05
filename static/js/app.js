@@ -138,14 +138,14 @@ class MapApp {
 
         // Glow layer
         const glow = L.polyline(routeGeometry, {
-            color: '#16a34a',
+            color: '#3b82f6',
             weight: 10,
             opacity: 0.25,
             interactive: false,
         }).addTo(this.map);
 
         const main = L.polyline(routeGeometry, {
-            color: '#16a34a',
+            color: '#3b82f6',
             weight: 5,
             opacity: 0.9,
             interactive: false,
