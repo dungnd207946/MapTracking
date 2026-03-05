@@ -308,7 +308,7 @@ class MapApp {
             const label = node.name || `(${node.lat.toFixed(5)}, ${node.lon.toFixed(5)})`;
             const icon = i === 0 ? '<span style="color:#16a34a">&#9679;</span>'
                 : i === data.path.length - 1 ? '<span style="color:#dc2626">&#9679;</span>'
-                : '<span style="color:#94a3b8">&rarr;</span>';
+                : '<span style="color:#94a3b6">&rarr;</span>';
             stepsHtml += `<div class="step">${icon} ${label}</div>`;
         }
         stepsDiv.innerHTML = stepsHtml;
